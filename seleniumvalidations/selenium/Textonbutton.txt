@@ -1,0 +1,12 @@
+verify text on button
+*********************************************************************************************
+public void verify()throws Exception
+{
+driver.get("http://google.co.in");
+WebElement element = driver.findElement(By.xpath("//span[text()='Google Search']"));
+String strng = element.getText();
+System.out.println(strng);
+Assert.assertEquals("Google Search", strng);
+}
+}
+**********************************************************************************************

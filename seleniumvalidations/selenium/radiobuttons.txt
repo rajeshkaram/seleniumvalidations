@@ -1,0 +1,64 @@
+verify radio button whether button is selected or not(using .isselected method)
+***************************************************************************************************************
+if(driver.findElement(By.xpath("//input[@class='radio' and @name='blooms_level'][starts-with(@id,'blooms_level')]")).isSelected())
+//if(driver.findElement(By.cssSelector("input.radio[name='blooms_level'][id^='blooms_level']")).isSelected())
+    System.out.println("Radio Button is selected");
+else
+    System.out.println("Radio Button is not selected");
+***********************************************************************************************************************
+
+enable isdisplayed radiobutton
+*****************************************************************************************************************
+WebElement male_radio_button=driver.findElement(By.id("u_0_e"));
+ 
+         boolean status=male_radio_button.isDisplayed();
+ 
+         System.out.println("Male radio button is Displayed >>"+status);
+ ***************************************************************************************
+
+       enable isEnabled radiobutton
+
+          boolean enabled_status=male_radio_button.isEnabled();
+ 
+          System.out.println("Male radio button is Enabled >>"+enabled_status);
+ *******************************************************************************************
+        isselected radiobutton
+
+        boolean selected_status=male_radio_button.isSelected();
+ 
+          System.out.println("Male radio button is Selected >>"+selected_status);
+ 
+          male_radio_button.click();
+ ************************************************************************************
+        boolean selected_status_new=male_radio_button.isSelected();
+ 
+          System.out.println("Male radio button is Selected >>"+selected_status_new);
+ 
+     }
+ 
+}
+
+
+***********************************************************************************************
+
+//verify radiobuttons equals attribute value
+
+//@Test
+public void verifyradiobutton() {
+	
+	System.setProperty("webdriver.chrome.driver", "E:\\completerajesh\\automation\\chromedriver.exe");	
+	WebDriver driver=new ChromeDriver();
+	driver.get("http://www.echoecho.com/htmlforms10.htm");
+	driver.manage().window().maximize();
+	driver.findElement(By.xpath("//td[@valign='top']//following-sibling::a[@href='htmlforms09.htm']")).click();
+	String value="male";
+	List<WebElement>radio=driver.findElements(By.xpath("//input[@name='option3' and @type='radio']"));
+	for(int i=0;i<check.size();i++) {
+	
+		if(check.get(i).getAttribute("value").equals(value)) {
+			check.get(i).click();
+		}
+	}
+}
+
+******************************************************************************************************************

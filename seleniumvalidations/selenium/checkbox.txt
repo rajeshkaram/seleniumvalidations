@@ -1,0 +1,36 @@
+verify checkbox  //If the checkbox is unchecked then isSelected() will return false 
+//and NOT of false is true, hence we can click on checkbox
+
+*******************************************************************************
+WebElement checkbox = driver.findElement(By.id("checkboxId"));
+
+//If the checkbox is unchecked then isSelected() will return false 
+//and NOT of false is true, hence we can click on checkbox
+if(!checkbox.isSelected())
+	checkbox.click();
+
+//checkbox is selected by default
+
+if(checkn=box.isSelected())
+checkbox.click();
+
+*********************************************************************************************
+//verify check box equals attribute value
+
+//@Test
+public void verifycheckbox() {
+	
+	System.setProperty("webdriver.chrome.driver", "E:\\completerajesh\\automation\\chromedriver.exe");	
+	WebDriver driver=new ChromeDriver();
+	driver.get("http://www.echoecho.com/htmlforms10.htm");
+	driver.manage().window().maximize();
+	driver.findElement(By.xpath("//td[@valign='top']//following-sibling::a[@href='htmlforms09.htm']")).click();
+	String value="Milk";
+	List<WebElement>check=driver.findElements(By.xpath("//input[@name='option3' and @type='checkbox']"));
+	for(int i=0;i<check.size();i++) {
+	
+		if(check.get(i).getAttribute("value").equals(value)) {
+			check.get(i).click();
+		}
+	}
+}

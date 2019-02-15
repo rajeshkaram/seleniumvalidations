@@ -1,0 +1,217 @@
+screencapture
+
+@Test
+ public static void captureScreenMethod() throws Exception{
+                System.setProperty("webdriver.gecko.driver","D://Selenium Environment//Drivers//geckodriver.exe");
+ WebDriver driver = new FirefoxDriver();
+ driver.manage().window().maximize();
+         try{
+             driver.get("https://www.softwaretestingmaterial.com");
+     driver.navigate().refresh();
+     //driver.findElement(By.xpath("//*[@id='cse-search-box']/div/input[4]")).sendKeys("agile"); //Statement with correct Xpath
+     driver.findElement(By.xpath("//*[@id='cse']")).sendKeys("agile"); //Statement with incorrect Xpath 
+                }catch(Exception e){
+             File screenshotFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+     FileUtils.copyFile(screenshotFile, new File("D:\\SoftwareTestingMaterial.png"));
+ }
+        driver.close();
+ driver.quit(); 
+ }
+}
+
+************************************************************************
+Failed test case
+**************************************************************************
+ // Create Webdriver reference
+ static WebDriver driver;
+ 
+ @Test
+ public static void captureScreenMethod() throws Exception{
+ System.setProperty("webdriver.gecko.driver","D://Selenium Environment//Drivers//geckodriver.exe");
+ driver = new FirefoxDriver();
+ driver.manage().window().maximize();
+ driver.get("https://www.softwaretestingmaterial.com");
+ driver.navigate().refresh();
+ //driver.findElement(By.xpath("//*[@id='cse-search-box']/div/input[4]")).sendKeys("agile"); //Statement with correct Xpath
+ driver.findElement(By.xpath("//*[@id='cse']")).sendKeys("agile"); //Statement with incorrect Xpath 
+ 
+ }
+ @AfterMethod //AfterMethod annotation - This method executes after every test execution
+ public void screenShot(ITestResult result){
+ //using ITestResult.FAILURE is equals to result.getStatus then it enter into if condition
+ if(ITestResult.FAILURE==result.getStatus()){
+ try{
+ // To create reference of TakesScreenshot
+ TakesScreenshot screenshot=(TakesScreenshot)driver;
+ // Call method to capture screenshot
+ File src=screenshot.getScreenshotAs(OutputType.FILE);
+ // Copy files to specific location 
+ // result.getName() will return name of test case so that screenshot name will be same as test case name
+ FileUtils.copyFile(src, new File("D:\\"+result.getName()+".png"));
+ System.out.println("Successfully captured a screenshot");
+ }catch (Exception e){
+ System.out.println("Exception while taking screenshot "+e.getMessage());
+ } 
+ }
+ driver.quit();
+ }
+}
+
+
+*********************************************************************
+
+you can call method capture scrren
+mport java.io.File;import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+ 
+public class Utility 
+{
+public static void captureScreenshot(WebDriver driver,String screenshotName)
+{
+ 
+try 
+{
+TakesScreenshot ts=(TakesScreenshot)driver;
+ 
+File source=ts.getScreenshotAs(OutputType.FILE);
+ 
+FileUtils.copyFile(source, new File("./Screenshots/"+screenshotName+".png"));
+ 
+System.out.println("Screenshot taken");
+} 
+catch (Exception e)
+{
+ 
+System.out.println("Exception while taking screenshot "+e.getMessage());
+} 
+}
+}
+ 
+ 
+
+You call the above method in below format
+Utility.captureScreenshot(driver,"name of screenshot");
+
+	
+*************************************************************************
+Failed testcase method-2 correct
+*************************************************************************
+WebDriver driver;
+	 
+	@Test
+	public void captureScreenshot() throws Exception
+	{
+	 
+		System.setProperty("webdriver.chrome.driver", "E:\\completerajesh\\automation\\chromedriver.exe");	
+		driver = new ChromeDriver(); 
+	 
+	// Maximize the browser
+	driver.manage().window().maximize();
+	 
+	// Pass application url
+	driver.get("http://www.facebook.com");
+	 
+	// Here we are forcefully passing wrong id so that it will fail our testcase
+	driver.findElement(By.xpath(".//*[@id='emailasdasdas']")).sendKeys("Learn Automation");
+	 
+	 
+	}
+	 
+	 
+	 
+	 
+	 
+	// It will execute after every test execution 
+	@AfterMethod
+	public void tearDown(ITestResult result)
+	{
+	 
+	// Here will compare if test is failing then only it will enter into if condition
+	if(ITestResult.FAILURE==result.getStatus())
+	{
+	try 
+	{
+	// Create refernce of TakesScreenshot
+	TakesScreenshot ts=(TakesScreenshot)driver;
+	 
+	// Call method to capture screenshot
+	File source=ts.getScreenshotAs(OutputType.FILE);
+	 
+	// Copy files to specific location here it will save all screenshot in our project home directory and
+	// result.getName() will return name of test case so that screenshot name will be same
+	FileUtils.copyFile(source, new File("./Screenshots/"+result.getName()+".png"));
+	 
+	System.out.println("Screenshot taken");
+	} 
+	catch (Exception e)
+	{
+	 
+	System.out.println("Exception while taking screenshot "+e.getMessage());
+	} 
+	 
+	 
+	 
+	}
+	// close application
+	driver.quit();
+	}
+	 
+	 
+	 
+	}
+
+****************************************************************
+
+Every step screenshot
+
+WebDriver driver;
+	@Test
+	public void everystepcaptureScreenshot() throws Exception
+	{
+	 
+		System.setProperty("webdriver.chrome.driver", "E:\\completerajesh\\automation\\chromedriver.exe");	
+		driver = new ChromeDriver(); 
+	 
+	// Maximize the browser
+	driver.manage().window().maximize();
+	 
+	// Pass application url
+	driver.get("http://www.facebook.com");
+	
+	driver.findElement(By.xpath("//*[@id=\"u_0_j\"]")).sendKeys("admin");
+everystepscreenshot.captureScreenshot(driver, "firstname");
+	driver.findElement(By.xpath("//*[@id=\"u_0_v\"]")).sendKeys("admin");
+	everystepscreenshot.captureScreenshot(driver, "lastname");
+	}
+	
+	
+	
+	
+	
+	
+	public static void captureScreenshot(WebDriver driver,String screenshotName)
+	{
+	 
+	try 
+	{
+	TakesScreenshot ts=(TakesScreenshot)driver;
+	 
+	File source=ts.getScreenshotAs(OutputType.FILE);
+	 
+	FileUtils.copyFile(source, new File("./Screenshots/"+screenshotName+".png"));
+	 
+	System.out.println("Screenshot taken");
+	} 
+	catch (Exception e)
+	{
+	 
+	System.out.println("Exception while taking screenshot "+e.getMessage());
+	} 
+	}
+	
+}
+
+*************************************************************************************************
+ 
