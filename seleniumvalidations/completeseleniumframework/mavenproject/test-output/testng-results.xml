@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="6" passed="6">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="124770" started-at="2019-02-15T12:34:18Z" finished-at="2019-02-15T12:36:23Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="124770" started-at="2019-02-15T12:34:18Z" finished-at="2019-02-15T12:36:23Z">
+      <class name="mavenproject.applicationpages">
+        <test-method status="PASS" signature="login(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:mavenproject.applicationpages@262b2c86]" name="login" duration-ms="21854" started-at="2019-02-15T12:34:18Z" data-provider="getCRMTestData" finished-at="2019-02-15T12:34:40Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[pbtyungh]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[aqzvbmmjm]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[iopsgghjhfgf]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[kuiohggh]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[96536.0]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[INDIA]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Delhi]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Delhi]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method status="PASS" signature="login(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:mavenproject.applicationpages@262b2c86]" name="login" duration-ms="20720" started-at="2019-02-15T12:34:40Z" data-provider="getCRMTestData" finished-at="2019-02-15T12:35:01Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[uiojiouhh]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[xsdsdddfght]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[nmjkhukjgcv]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[ryuiuib]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[89638.0]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[UK]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[England]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[LONDON]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method status="PASS" signature="login(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:mavenproject.applicationpages@262b2c86]" name="login" duration-ms="20269" started-at="2019-02-15T12:35:01Z" data-provider="getCRMTestData" finished-at="2019-02-15T12:35:21Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[erexcvcmnm]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[oppppmjo]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[qqqaaaaauk]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[vbytrfkj]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[23658.0]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[USA]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[NewYork]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Watertown]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method status="PASS" signature="login(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:mavenproject.applicationpages@262b2c86]" name="login" duration-ms="20521" started-at="2019-02-15T12:35:21Z" data-provider="getCRMTestData" finished-at="2019-02-15T12:35:42Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[xccawamm]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[qqnnmigha]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[rrtyuwsxx]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[mmmkisd]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[45465.0]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[INDIA]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[Delhi]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Delhi]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method status="PASS" signature="login(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:mavenproject.applicationpages@262b2c86]" name="login" duration-ms="20747" started-at="2019-02-15T12:35:42Z" data-provider="getCRMTestData" finished-at="2019-02-15T12:36:03Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[ooooopqmm]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[zaaqvhgjhr]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[mmkkqqaazzdf]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[vvvfnnbmht]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[45547.0]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[UK]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[England]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[LONDON]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+        <test-method status="PASS" signature="login(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:1, instance:mavenproject.applicationpages@262b2c86]" name="login" duration-ms="20285" started-at="2019-02-15T12:36:03Z" data-provider="getCRMTestData" finished-at="2019-02-15T12:36:23Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Admin]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[fghghdvfgdd]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[zaqqsfnhkjho]]>
+              </value>
+            </param>
+            <param index="4">
+              <value>
+                <![CDATA[aaqzcbpojhxds]]>
+              </value>
+            </param>
+            <param index="5">
+              <value>
+                <![CDATA[bbbbyyewn]]>
+              </value>
+            </param>
+            <param index="6">
+              <value>
+                <![CDATA[90079.0]]>
+              </value>
+            </param>
+            <param index="7">
+              <value>
+                <![CDATA[USA]]>
+              </value>
+            </param>
+            <param index="8">
+              <value>
+                <![CDATA[NewYork]]>
+              </value>
+            </param>
+            <param index="9">
+              <value>
+                <![CDATA[Watertown]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- login -->
+      </class> <!-- mavenproject.applicationpages -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

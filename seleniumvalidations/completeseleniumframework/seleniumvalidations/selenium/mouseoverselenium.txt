@@ -1,0 +1,116 @@
+Mouse Hover Action in Selenium:
+
+// Create object of Action class
+Actions action = new Actions(driver);
+
+// Find element using locator and store into WebElement
+WebElement element = driver.findElement(By.id("elementId"));
+
+// Perform moveToElement operation using action (object) on element.
+action.moveToElement(element).perform();
+
+	
+// Create object of Action class
+Actions action = new Actions(driver);
+ 
+// Find element using locator and store into WebElement
+WebElement element = driver.findElement(By.id("elementId"));
+ 
+// Perform moveToElement operation using action (object) on element.
+action.moveToElement(element).perform();
+
+ 
+Mouse Hover and Click on WebElement:
+
+// Find element using locator and store into WebElement
+WebElement elementToHover = driver.findElement(By.id("elementToHover "));
+
+// Find element using locator and store into WebElement
+WebElement elementToClick = driver.findElement(By.id("elementToClick "));
+
+// Create object of Action class
+Actions action = new Actions(driver);
+
+// Perform moveToElement operation using action (object) on element.
+action.moveToElement(elementToHover).click(elementToClick).build().perform();
+
+	
+// Find element using locator and store into WebElement
+WebElement elementToHover = driver.findElement(By.id("elementToHover "));
+ 
+// Find element using locator and store into WebElement
+WebElement elementToClick = driver.findElement(By.id("elementToClick "));
+ 
+// Create object of Action class
+Actions action = new Actions(driver);
+ 
+// Perform moveToElement operation using action (object) on element.
+action.moveToElement(elementToHover).click(elementToClick).build().perform();
+
+ 
+Example of Mouse Hover and Perform Click operation:
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class Mouse_Hover {
+
+public static void main(String[] args) {
+
+System.setProperty("webdriver.gecko.driver","D:\\geckodriver.exe");
+
+WebDriver driver = new FirefoxDriver();
+
+driver.get("http://www.stqatools.com");
+
+// Find element using locator and store into WebElement
+WebElement elementToHover = driver.findElement(By.id("elementToHover "));
+
+// Find element using locator and store into WebElement
+WebElement elementToClick = driver.findElement(By.id("elementToClick "));
+
+// Create object of Action class
+Actions action = new Actions(driver);
+
+// Perform moveToElement operation using action (object) on element.
+action.moveToElement(elementToHover).click(elementToClick).build().perform();
+
+}
+
+}
+
+	
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
+ 
+public class Mouse_Hover {
+ 
+public static void main(String[] args) {
+ 
+System.setProperty("webdriver.gecko.driver","D:\\geckodriver.exe");
+ 
+WebDriver driver = new FirefoxDriver();
+ 
+driver.get("http://www.stqatools.com");
+ 
+// Find element using locator and store into WebElement
+WebElement elementToHover = driver.findElement(By.id("elementToHover "));
+ 
+// Find element using locator and store into WebElement
+WebElement elementToClick = driver.findElement(By.id("elementToClick "));
+ 
+// Create object of Action class
+Actions action = new Actions(driver);
+ 
+// Perform moveToElement operation using action (object) on element.
+action.moveToElement(elementToHover).click(elementToClick).build().perform();
+ 
+}
+ 
+}

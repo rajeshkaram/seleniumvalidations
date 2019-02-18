@@ -1,0 +1,139 @@
+http://stqatools.com/selenium-assert-and-verify/
+
+verify and assert
+
+Verify Text Present :
+
+    Before or after the testing phase, we need to see if specific text is displayed or not.
+
+
+
+	
+if(driver.getPageSource().contains("stqatools"))
+ 
+{
+ 
+System.out.println("Name is Present");
+ 
+}
+ 
+else
+ 
+{
+ 
+System.out.println("Name is not Present");
+ 
+}
+
+************************************************************************************
+
+Assert Text Present :
+
+
+********************************************************************************
+	
+assertTrue(driver.getPageSource().contains("stqatools"));
+
+***************************************************************************************
+
+Verify Element Present :
+
+    Verify element is present or not in Web Page using in-Built methods.
+
+	
+!driver.findElements(By.id("id")).isEmpty();
+ 
+// OR
+ 
+if(isElementPresent(By.linkText("Submit_Button")))
+ 
+{
+ 
+System.out.println("Submit_Button Link/Button found");
+ 
+}
+ 
+else
+ 
+{
+ 
+System.out.println("Submit_Button Link/Button not found");
+ 
+}
+
+
+******************************************************************************************************
+
+Assert Element Present :
+
+    Assert element is present or not, If not present then then Halt process.
+
+assertTrue(isElementPresent(By.cssSelector("div.stqatools")));
+
+	************************************************************************************************
+
+Example: Verify string using assertTrue.
+*************************************************************************************************************
+String str = driver.findElement(By.xpath("xpath")).getText();
+
+assertTrue(actualString.contains("specific text"));
+
+	
+String str = driver.findElement(By.xpath("xpath")).getText();
+ 
+assertTrue(actualString.contains("specific text"));
+ ********************************************************************************************************
+
+example assert
+
+
+	
+import static org.testng.Assert.assertEquals;
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+ 
+public class Assert_Example {
+ 
+    public static void main(String args[]) {
+ 
+       String Actual = "Actual";
+       String Expected = "Expected";
+ 
+       // Assertion Passing
+       Assert.assertTrue(Actual == Actual);
+ 
+       System.out.println("Passing 1");
+ 
+       // Assertion failing
+       Assert.fail("Failing 2");
+ 
+       System.out.println("Failing 2");
+ 
+       // Check Assert Equals
+       assertEquals(Actual, Expected);
+   }
+}
+********************************************************************************************************************
+example verify 
+**************************************************************************************************************************
+	
+import org.testng.asserts.SoftAssert;
+ 
+public class Verify_Example {
+ 
+   public static void main(String args[]) {
+ 
+      // Creating softAssert object
+      SoftAssert softAssert = new SoftAssert();
+ 
+      // Assertion failing
+      softAssert.fail("Failing first assertion");
+ 
+      System.out.println("Failing 1");    
+   }
+}
+******************************************************************************************************************

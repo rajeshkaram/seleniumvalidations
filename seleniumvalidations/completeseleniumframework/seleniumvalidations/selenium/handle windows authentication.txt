@@ -1,0 +1,23 @@
+handle windows authentication using autoit scripts
+*************************************************************************
+AUTO IT SCRIPT
+WindowWaitAcive("Authentication Required")
+send("validusername")
+send("{TAB}")
+send("validpassword")
+send("{ENTER}")
+
+save and then compile u get exe file
+
+File pathToBinary = new File("C:\\Users\\rajesh.k\\AppData\\Local\\Mozilla Firefox\\firefox.exe");
+		FirefoxBinary ffBinary = new FirefoxBinary(pathToBinary);
+		FirefoxProfile firefoxProfile = new FirefoxProfile();
+		System.setProperty("webdriver.gecko.driver","C:\\Users\\rajesh.k\\Downloads\\geckodriver.exe");       
+		
+		WebDriver driver = new FirefoxDriver(ffBinary,firefoxProfile);
+		
+		
+		driver.manage().window().maximize();
+		Runtime.getRuntime().exec("C:\\Users\\rajesh.k\\Desktop\\window.exe");
+		driver.get("http://www.engprod-charter.net/");
+}

@@ -1,0 +1,1026 @@
+links for webtable:http://makeseleniumeasy.com/2017/07/14/how-to-handle-a-web-table-in-selenium-webdriver/
+https://www.guru99.com/handling-dynamic-selenium-webdriver.html
+
+
+webtables to print table  rows content in console conclude company contains 3 columns
+
+//*[@id="customers"]/tbody/tr[2]/td[1]
+
+1st column
+****************************************************************************************
+List<webelement>rows=driver.findelements(By.xpath("//table[@id='customers']/tbody/tr
+int rowcount=rows.size();
+System.out.println("Total rows in web table:" +rowcount);
+String beforexapth="//8[@id='customers']/tbody/tr[";
+String afterxpath= "]/td[1]";
+for(int i=2;i<=rowcount;i++){
+
+String actualxpath=beforexpath+i+afterxpath;
+webelement element =driver.findElement(By.xpath(actualxpath));
+System.out.println(element.getText());
+if(element.getText().equals("Island trading")){
+
+System.out.println("company name :"+element.getText()+" is found:"+(i-1));
+break;
+}
+}
+***************************************************************************
+2nd column
+//*[@id="customers"]/tbody/tr[2]/td[1]
+
+String beforexapth="//8[@id='customers']/tbody/tr[";
+String afterxpath= "]/td[2]";
+for(int i=2;i<=rowcount;i++){
+
+String actualxpath=beforexpath+i+afterxpath;
+webelement element =driver.findElement(By.xpath(actualxpath));
+System.out.println(element.getText());
+*****************************************************************************
+3rd column
+//*[@id="customers"]/tbody/tr[2]/td[1]
+
+String beforexapth="//8[@id='customers']/tbody/tr[";
+String afterxpath= "]/td[3]";
+for(int i=2;i<=rowcount;i++){
+
+String actualxpath=beforexpath+i+afterxpath;
+webelement element =driver.findElement(By.xpath(actualxpath));
+System.out.println(element.getText());
+
+************************************************************************************
+to print columns contents in table
+
+//*[@id="customers"]/tobody/tr[1]/th[1]
+
+String colbeforexpath="//[@id='customers']/tbody/tr[1]/th[";
+String colAfterxpath= "]";
+List<Webelement>cols=driver.findElements(xpath("//*[@id='customers']/tobody/tr[1]/th"));
+int colcount=cols.size();
+System.out.println("Total number of columns are:" + colcount);
+for(int i=1;i<colcount;i++){
+
+Webelement element=driver.findElement(By.xapth(colBeforexpath+i+colAfterxpath));
+String colText=element.getText();
+System.out.println("columns values are:");
+System.out.println(colText);
+
+*********************************************************************************
+to print tables row values name contains with x then click checkbox in console
+
+String beforexapth="//*[@id='contacts']/tbody/tr[";
+String afterxpath="]/td[2]/a";
+for(int i=4;i<=7;i++){
+String name=driver.findElement(By.xpath(beforexpath+i+afterxpath)).getText();
+System.out.println(name);
+if(name.contains("test2 test2")){ i=6
+
+//*[@id='vcontactsform']/table/tbody/tr[6]/td[1]/input--append
+
+driver.findElement(By.xpath("//*[@id='vcontactsform']/table/tbody/tr["+i+"]/input")).click();
+}
+}
+
+
+}
+
+**********************************************************************************************************
+
+   webtables printing rows and columns
+    
+    *********************************************************************************************************
+    Step 2: Get all the rows with tag name ‘tr’ and store all the elements in a list of web elements. Now all the elements with tag ‘tr’ are stored in ‘rows’ list.
+
+    //Finding & Printing number of rows
+**************************************************************************************************************
+    List<WebElement>rows=webtable.findElements(By.tagName(“tr”));
+
+    System.out.println(“Number of Rows including headings:”+ rows.size());
+********************************************************************************************************************
+Step 3: Get the number of columns. Here we have used “tagName” of columns – “th”. Please note that this represents the heading row only.
+
+    //Finding and printing number of columns
+    List<WebElement>columns = rows.get(0).findElements(By.tagName(“th”));
+    System.out.println(“Number of columns:”+ columns.size());
+******************************************************************************************************
+Step 4: Now, we can get to individual cells. But, first of all, we will print the headings.
+
+    //Finding & Printing the column headings
+
+    for(int cnum=0;cnum<columns.size();cnum++)
+    {
+    System.out.println(columns.get(cnum).getText());
+    }
+
+***********************************************************************************************************
+
+Check Cell present or Not in Dynamic WebTable Handle using Selenium:
+******************************************************************************************************************
+
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Print_WebTable_Data {
+
+   public static void main(String args[]) {
+
+      System.setProperty("webdriver.chrome.driver", "Path to your chromedriver.exe");                       
+
+      WebDriver driver = new ChromeDriver();                       
+
+      driver.get("http://www.stqatools.com");                       
+
+      driver.manage().window().maximize();                       
+
+      // Identify the table
+      <a href="http://stqatools.com/selenium-webelement-commands/">WebElement</a> table = driver.findElement(By.id("tableId"));
+
+      // Get all rows (tr tags)
+      List<WebElement> rows = table.findElements(By.tagName("tr"));
+
+      String Expected = "CellName";  
+      // Print data from each row (Data from each td tag)
+
+      for (WebElement row : rows) {
+
+      List<WebElement> cols = row.findElements(By.tagName("td"));
+
+      for (WebElement col : cols) {
+
+              System.out.print(col.getText() + "\t");
+
+              String Actual = col.getText();                                               
+
+              // Check Expected Cell is present or not in WebTable
+              if (Actual.equals(Expected)) {
+
+                      System.out.println("Cell Exist in WebTable...");
+
+                    }
+                }
+
+            System.out.println();
+        }
+   }
+}
+
+*********************************************************************************************************
+
+Handling different scenarios of web table:
+1. Print all headers of web table:
+
+Headers of web able is also a row. Header is created using <th> with <tr>. Generally first row of table is header. We can retrieve header name and print them using below code:
+// Printing table header of a web table assuming first row as header
+List allHeadersOfTable= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr[1]/th"));
+System.out.println("Headers in table are below:");
+System.out.println("Total headers found: "+allHeadersOfTable.size());
+for(WebElement header:allHeadersOfTable)
+{
+	System.out.println(header.getText());
+}
+********************************************************************************************
+	
+// Printing table header of a web table assuming first row as header
+List allHeadersOfTable= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr[1]/th"));
+System.out.println("Headers in table are below:");
+System.out.println("Total headers found: "+allHeadersOfTable.size());
+for(WebElement header:allHeadersOfTable)
+{
+	System.out.println(header.getText());
+}
+Output:
+Headers in table are below:
+Total headers found: 4
+BookName
+Author
+Subject
+Price
+********************************************************************************************
+	
+Output:
+Headers in table are below:
+Total headers found: 4
+BookName
+Author
+Subject
+Price
+
+In above code, I am using index (/tr[1]) to locate first row of table. I am assuming first row in table will be header. Suppose, if we are not sure which row is header, then we can use below code:
+// Printing table header of a web table assuming no information about header row
+List allHeadersOfTable1= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/th"));
+System.out.println("Headers in table are below:");
+System.out.println("Total headers found: "+allHeadersOfTable1.size());
+for(WebElement header:allHeadersOfTable1)
+{
+	System.out.println(header.getText());
+}
+********************************************************************************************
+	
+// Printing table header of a web table assuming no information about header row
+List allHeadersOfTable1= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/th"));
+System.out.println("Headers in table are below:");
+System.out.println("Total headers found: "+allHeadersOfTable1.size());
+for(WebElement header:allHeadersOfTable1)
+{
+	System.out.println(header.getText());
+}
+
+ 
+Output:
+Headers in table are below:
+Total headers found: 4
+BookName
+Author
+Subject
+Price
+********************************************************************************************
+	
+Output:
+Headers in table are below:
+Total headers found: 4
+BookName
+Author
+Subject
+Price
+2. Retrieve and print number of rows in a web table:
+
+We can retrieve and print number of rows using below code:
+// Finding number of rows in a web table. We need to exclude header to get actual number of data rows
+List allRows= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr"));
+System.out.println("Total data rows found in table:"+ (allRows.size()-1));
+********************************************************************************************
+	
+// Finding number of rows in a web table. We need to exclude header to get actual number of data rows
+List allRows= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr"));
+System.out.println("Total data rows found in table:"+ (allRows.size()-1));
+Total data rows found in table:6
+1
+	
+Total data rows found in table:6
+
+Since total number of rows includes header row, so we need to exclude header row from total number of rows to get actual number of data rows.
+3. Find number of columns for each row:
+
+Rows of a dynamic web table can have different number of columns. For example: Row1 has 3 columns while Row2 has 2 columns only. We can retrieve number of columns for each row using below code:
+// Find number of columns in each row
+List allRows= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr"));
+// We will start from 2nd row as 1st row is header
+for(int i=2;i&lt;=allRows.size();i++)
+{
+	List allColumnsInRow=driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td"));
+	System.out.println("Number of columns in "+(i-1)+" data row is:"+allColumnsInRow.size());
+}
+********************************************************************************************
+	
+// Find number of columns in each row
+List allRows= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr"));
+// We will start from 2nd row as 1st row is header
+for(int i=2;i&lt;=allRows.size();i++)
+{
+	List allColumnsInRow=driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td"));
+	System.out.println("Number of columns in "+(i-1)+" data row is:"+allColumnsInRow.size());
+}
+Number of columns in 1 data row is:4
+Number of columns in 2 data row is:4
+Number of columns in 3 data row is:4
+Number of columns in 4 data row is:4
+Number of columns in 5 data row is:4
+Number of columns in 6 data row is:4
+1
+2
+3
+4
+5
+6
+	
+Number of columns in 1 data row is:4
+Number of columns in 2 data row is:4
+Number of columns in 3 data row is:4
+Number of columns in 4 data row is:4
+Number of columns in 5 data row is:4
+Number of columns in 6 data row is:4
+4. Retrieve name of book whose author is Mukesh:
+
+Way 1:
+
+In table, we know 2nd column consists author name. So first we will retrieve author name column and will match by required author name. If it matches hen we will take value from 1st column which is book name.
+System.out.println("Books written by Mukesh are below:");
+List allRows= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr"));
+for(int i=2;i&lt;=allRows.size();i++)
+{
+     WebElement authorColumn=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[2]"));
+     if(authorColumn.getText().toLowerCase().equalsIgnoreCase("Mukesh"))
+     {
+	WebElement bookNameColumns=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[1]"));
+	System.out.println(bookNameColumns.getText());
+     }
+}
+********************************************************************************************
+	
+System.out.println("Books written by Mukesh are below:");
+List allRows= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr"));
+for(int i=2;i&lt;=allRows.size();i++)
+{
+     WebElement authorColumn=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[2]"));
+     if(authorColumn.getText().toLowerCase().equalsIgnoreCase("Mukesh"))
+     {
+	WebElement bookNameColumns=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[1]"));
+	System.out.println(bookNameColumns.getText());
+     }
+}
+Books written by Mukesh are below:
+Learn Java
+Master In Selenium
+********************************************************************************************
+	
+Books written by Mukesh are below:
+Learn Java
+Master In Selenium
+
+Way 2:
+
+This way is more efficient. I am using xpath text() method here.
+// Another shortcut way
+System.out.println("Books written by Mukesh are below:");
+List allColumnsInRow=driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/td[text()='Mukesh']/../td[1]"));
+for(WebElement e: allColumnsInRow)
+{
+	System.out.println(e.getText());
+}
+********************************************************************************************
+	
+// Another shortcut way
+System.out.println("Books written by Mukesh are below:");
+List allColumnsInRow=driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/td[text()='Mukesh']/../td[1]"));
+for(WebElement e: allColumnsInRow)
+{
+	System.out.println(e.getText());
+}
+Books written by Mukesh are below:
+Learn Java
+Master In Selenium
+	
+Books written by Mukesh are below:
+Learn Java
+Master In Selenium
+5. List all books whose price is greater than or equal to 1000.
+
+We can achieve this using below code:
+List allRows= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr"));
+// Print book name whose price is greater than and equal to 1000
+System.out.println("========================================================================");
+System.out.println("Books with price greater than and equal to 1000 are below:");
+for(int i=2;i&lt;=allRows.size();i++) 
+{ 
+WebElement priceColumn=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[4]")); 
+if(Integer.parseInt(priceColumn.getText())&gt;=1000)
+{
+       	WebElement bookName=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[1]"));
+	System.out.println(bookName.getText());
+}
+}
+System.out.println("========================================================================");
+********************************************************************************************
+	
+List allRows= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr"));
+// Print book name whose price is greater than and equal to 1000
+System.out.println("========================================================================");
+System.out.println("Books with price greater than and equal to 1000 are below:");
+for(int i=2;i&lt;=allRows.size();i++) 
+{ 
+WebElement priceColumn=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[4]")); 
+if(Integer.parseInt(priceColumn.getText())&gt;=1000)
+{
+       	WebElement bookName=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[1]"));
+	System.out.println(bookName.getText());
+}
+}
+System.out.println("========================================================================");
+Output:
+========================================================================
+Books with price greater than and equal to 1000 are below:
+Master In Selenium
+Master In Java
+Master In JS
+========================================================================
+1
+2
+3
+4
+5
+6
+7
+	
+Output:
+========================================================================
+Books with price greater than and equal to 1000 are below:
+Master In Selenium
+Master In Java
+Master In JS
+========================================================================
+6. Print last row of table:
+
+We know number of rows in a dynamic web table will be keep on changing. Take an example of shopping mart. All sale amount are entered in a web table and at end of the day, sum of amount is displayed as a last row of table. So, directly we need to access last row to get total sell amount. We can not use a static row number because rows in table will depend on number of sales. In this case we will use last() method of xpath as shown below:
+// How to print data from last row
+System.out.println("Directly printing column values of last row of table: ");
+List columnOfLastRow= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr[last()]/td"));
+for(WebElement e:columnOfLastRow)
+{
+	System.out.println(e.getText());
+}
+System.out.println("========================================================================");
+	
+// How to print data from last row
+System.out.println("Directly printing column values of last row of table: ");
+List columnOfLastRow= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr[last()]/td"));
+for(WebElement e:columnOfLastRow)
+{
+	System.out.println(e.getText());
+}
+System.out.println("========================================================================");
+Output:
+Directly printing column values of last row of table: 
+Master In JS
+Amit
+Javascript
+1000
+========================================================================
+
+	
+Output:
+Directly printing column values of last row of table: 
+Master In JS
+Amit
+Javascript
+1000
+========================================================================
+7. Print total cost of all books listed in table:
+
+We can print sum of cost of all books using below code:
+// find sum of cost of all books listed
+List costColumns= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/td[4]"));
+int sum_price=0;
+for(WebElement e:costColumns)
+{
+	sum_price= sum_price+Integer.parseInt(e.getText());
+}
+System.out.println("total price: "+sum_price);
+System.out.println("========================================================================");
+
+	
+// find sum of cost of all books listed
+List costColumns= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/td[4]"));
+int sum_price=0;
+for(WebElement e:costColumns)
+{
+	sum_price= sum_price+Integer.parseInt(e.getText());
+}
+System.out.println("total price: "+sum_price);
+System.out.println("========================================================================");
+Output:
+total price: 7100
+========================================================================
+	
+Output:
+total price: 7100
+========================================================================
+8. Retrieving cell value of specific column of specific row
+
+We can locate a particular cell based on row and column number as shown below:
+// Retrive cell value by providing row and column number
+WebElement colValue= driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr[2]/td[3]"));
+System.out.println(colValue.getText());
+System.out.println("========================================================================");
+********************************************************************************************	
+// Retrive cell value by providing row and column number
+WebElement colValue= driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr[2]/td[3]"));
+System.out.println(colValue.getText());
+System.out.println("========================================================================");
+Output:
+Cell Value : Selenium
+	
+Output:
+Cell Value : Selenium
+
+You can also make a customized method with parameters as shown below:
+public static String getColValue(int row, int col, WebDriver driver)
+{
+   WebElement colValue= driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+row+"]/td["+col+"]"));
+   return colValue.getText();
+				
+}
+********************************************************************************************	
+public static String getColValue(int row, int col, WebDriver driver)
+{
+   WebElement colValue= driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+row+"]/td["+col+"]"));
+   return colValue.getText();
+				
+}
+********************************************************************************************
+You can make it more customizing by passing attribute value as parameters. Try that yourself.
+9. Finding column index using column name:
+
+You have requirement that you need to find average of cost of books. You are not aware which column has cost details. In this case, you first need to iterate header and match header name with “Price”. If it matches take that column number. Your problem is solve.
+// Printing column index based on column name
+List allHeadersOfTable2= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr[1]/th"));
+for(int k=0;k&lt;allHeadersOfTable2.size();k++)
+{
+	if(allHeadersOfTable2.get(k).getText().equalsIgnoreCase("price"))
+	{
+		System.out.println("Column index of Price column is: "+(k+1));
+	}
+				
+}
+
+	
+// Printing column index based on column name
+List allHeadersOfTable2= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr[1]/th"));
+for(int k=0;k&lt;allHeadersOfTable2.size();k++)
+{
+	if(allHeadersOfTable2.get(k).getText().equalsIgnoreCase("price"))
+	{
+		System.out.println("Column index of Price column is: "+(k+1));
+	}
+				
+}
+Output:
+Column index of Price column is: 4
+
+	
+Output:
+Column index of Price column is: 4
+**********************************************************************************************
+10. Printing all data of table:
+
+We can print all data of table using below code:
+//Print each rows and columns from web table
+System.out.println("Printing all column value: ");
+for(int i=2;i&lt;=allRows.size();i++)
+{
+List allColumnsInRow=driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td"));
+for(int j=0;j&lt;allColumnsInRow.size();j++)
+{
+	System.out.print(allColumnsInRow.get(j).getText()+" ");
+}
+System.out.println();
+}
+***************************************************************************
+	
+//Print each rows and columns from web table
+System.out.println("Printing all column value: ");
+for(int i=2;i&lt;=allRows.size();i++)
+{
+List allColumnsInRow=driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td"));
+for(int j=0;j&lt;allColumnsInRow.size();j++)
+{
+	System.out.print(allColumnsInRow.get(j).getText()+" ");
+}
+System.out.println();
+}
+
+ 
+
+Complete JAVA CODE:
+
+package MakeSeleniumEasy;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class HandlingWebTable {
+
+	public static void main(String[] args) {
+		
+		System.out.println("Execution Starts");
+		// Setting chrome driver property and opening chrome browser
+		System.setProperty("webdriver.chrome.driver", "./exefiles/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		System.out.println("Browser opened.");
+		// loading URL
+		driver.get("C:/Users/Amod Mahajan/Desktop/HTMLTable.html");
+		
+		// Printing table header of a web table assuming first row as header
+		System.out.println("Printing all header of table assuming first row as header: ");
+		List allHeadersOfTable= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr[1]/th"));
+		System.out.println("Headers in table are below:");
+		System.out.println("Total headers found: "+allHeadersOfTable.size());
+		for(WebElement header:allHeadersOfTable)
+		{
+			System.out.println(header.getText());
+		}
+		System.out.println("=====================================================================");
+		
+		// Printing table header of a web table assuming no information about header row
+		System.out.println("Printing all header of table without information of row header ");
+		List allHeadersOfTable1= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/th"));
+		System.out.println("Headers in table are below:");
+		System.out.println("Total headers found: "+allHeadersOfTable1.size());
+		for(WebElement header:allHeadersOfTable1)
+		{
+			System.out.println(header.getText());
+		}
+		System.out.println("=====================================================================");
+		// Finding number of rows in a web table. We need to exclude header to get actual number of data rows
+		System.out.println("Retrieving total number of data rows:");
+		List allRows= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr"));
+		System.out.println("Total data rows found in table:"+ (allRows.size()-1));
+		System.out.println("=====================================================================");
+		// Find number of columns in each row
+		System.out.println("Retrieving total number of columns for each row:");
+		for(int i=2;i&lt;=allRows.size();i++)
+		{
+			List allColumnsInRow=driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td"));
+			System.out.println("Number of columns in "+(i-1)+" data row is:"+allColumnsInRow.size());
+		}
+		System.out.println("=====================================================================");
+		
+		//Print each rows and columns from web table
+		System.out.println("Printing all column value: ");
+		for(int i=2;i&lt;=allRows.size();i++)
+		{
+			List allColumnsInRow=driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td"));
+			for(int j=0;j&lt;allColumnsInRow.size();j++)
+			{
+				System.out.print(allColumnsInRow.get(j).getText()+" ");
+			}
+			System.out.println();
+		}
+		System.out.println("=====================================================================");
+		// List books name and price whose author is mukesh
+		System.out.println("Way 1: Books written by Mukesh are below:");
+		for(int i=2;i&lt;=allRows.size();i++)
+		{
+			WebElement authorColumn=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[2]"));
+			if(authorColumn.getText().toLowerCase().equalsIgnoreCase("Mukesh"))
+			{
+				WebElement bookNameColumns=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[1]"));
+				System.out.println(bookNameColumns.getText());
+			}
+		}
+		System.out.println("=====================================================================");
+		// Another shortcut way
+		System.out.println("Way 2: Books written by Mukesh are below:");
+		List allColumnsInRow=driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/td[text()='Mukesh']/../td[1]"));
+		for(WebElement e: allColumnsInRow)
+		{
+			System.out.println(e.getText());
+		}
+		
+		// Print book name whose price is greater than and equal to 1000
+		System.out.println("========================================================================");
+		System.out.println("Books with price greater than and equal to 1000 are below:");
+		for(int i=2;i&lt;=allRows.size();i++) { WebElement priceColumn=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[4]")); if(Integer.parseInt(priceColumn.getText())&gt;=1000)
+			{
+				WebElement bookName=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[1]"));
+				System.out.println(bookName.getText());
+			}
+		}
+		System.out.println("========================================================================");
+		// How to print data from last row
+		System.out.println("Directly printing column values of last row of table: ");
+		List columnOfLastRow= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr[last()]/td"));
+		for(WebElement e:columnOfLastRow)
+		{
+			System.out.println(e.getText());
+		}
+		System.out.println("========================================================================");
+		// find sum of cost of all books listed
+		
+		List costColumns= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/td[4]"));
+		int sum_price=0;
+		for(WebElement e:costColumns)
+		{
+			sum_price= sum_price+Integer.parseInt(e.getText());
+		}
+		System.out.println("total price: "+sum_price);
+		System.out.println("========================================================================");
+		
+		
+		// Retrive cell value by providing row and column number
+		WebElement colValue= driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr[2]/td[3]"));
+		System.out.println("Cell Value : "+colValue.getText());
+		System.out.println("========================================================================");
+		System.out.println("Cell value using custom method: "+HandlingWebTable.getColValue(2, 3, driver));
+		
+		
+		// Printing column index based on column name
+		List allHeadersOfTable2= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr[1]/th"));
+		for(int k=0;k&lt;allHeadersOfTable2.size();k++)
+		{
+			if(allHeadersOfTable2.get(k).getText().equalsIgnoreCase("price"))
+			{
+				System.out.println("Column index of Price column is: "+(k+1));
+			}
+				
+		}
+		
+		driver.quit();
+		
+	}
+	
+	public static String getColValue(int row, int col, WebDriver driver)
+	{
+		WebElement colValue= driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+row+"]/td["+col+"]"));
+		return colValue.getText();
+				
+	}
+	
+}
+******************************************************************************************************
+	
+ 
+package MakeSeleniumEasy;
+ 
+import java.util.List;
+ 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+ 
+public class HandlingWebTable {
+ 
+	public static void main(String[] args) {
+		
+		System.out.println("Execution Starts");
+		// Setting chrome driver property and opening chrome browser
+		System.setProperty("webdriver.chrome.driver", "./exefiles/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		System.out.println("Browser opened.");
+		// loading URL
+		driver.get("C:/Users/Amod Mahajan/Desktop/HTMLTable.html");
+		
+		// Printing table header of a web table assuming first row as header
+		System.out.println("Printing all header of table assuming first row as header: ");
+		List allHeadersOfTable= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr[1]/th"));
+		System.out.println("Headers in table are below:");
+		System.out.println("Total headers found: "+allHeadersOfTable.size());
+		for(WebElement header:allHeadersOfTable)
+		{
+			System.out.println(header.getText());
+		}
+		System.out.println("=====================================================================");
+		
+		// Printing table header of a web table assuming no information about header row
+		System.out.println("Printing all header of table without information of row header ");
+		List allHeadersOfTable1= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/th"));
+		System.out.println("Headers in table are below:");
+		System.out.println("Total headers found: "+allHeadersOfTable1.size());
+		for(WebElement header:allHeadersOfTable1)
+		{
+			System.out.println(header.getText());
+		}
+		System.out.println("=====================================================================");
+		// Finding number of rows in a web table. We need to exclude header to get actual number of data rows
+		System.out.println("Retrieving total number of data rows:");
+		List allRows= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr"));
+		System.out.println("Total data rows found in table:"+ (allRows.size()-1));
+		System.out.println("=====================================================================");
+		// Find number of columns in each row
+		System.out.println("Retrieving total number of columns for each row:");
+		for(int i=2;i&lt;=allRows.size();i++)
+		{
+			List allColumnsInRow=driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td"));
+			System.out.println("Number of columns in "+(i-1)+" data row is:"+allColumnsInRow.size());
+		}
+		System.out.println("=====================================================================");
+		
+		//Print each rows and columns from web table
+		System.out.println("Printing all column value: ");
+		for(int i=2;i&lt;=allRows.size();i++)
+		{
+			List allColumnsInRow=driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td"));
+			for(int j=0;j&lt;allColumnsInRow.size();j++)
+			{
+				System.out.print(allColumnsInRow.get(j).getText()+" ");
+			}
+			System.out.println();
+		}
+		System.out.println("=====================================================================");
+		// List books name and price whose author is mukesh
+		System.out.println("Way 1: Books written by Mukesh are below:");
+		for(int i=2;i&lt;=allRows.size();i++)
+		{
+			WebElement authorColumn=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[2]"));
+			if(authorColumn.getText().toLowerCase().equalsIgnoreCase("Mukesh"))
+			{
+				WebElement bookNameColumns=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[1]"));
+				System.out.println(bookNameColumns.getText());
+			}
+		}
+		System.out.println("=====================================================================");
+		// Another shortcut way
+		System.out.println("Way 2: Books written by Mukesh are below:");
+		List allColumnsInRow=driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/td[text()='Mukesh']/../td[1]"));
+		for(WebElement e: allColumnsInRow)
+		{
+			System.out.println(e.getText());
+		}
+		
+		// Print book name whose price is greater than and equal to 1000
+		System.out.println("========================================================================");
+		System.out.println("Books with price greater than and equal to 1000 are below:");
+		for(int i=2;i&lt;=allRows.size();i++) { WebElement priceColumn=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[4]")); if(Integer.parseInt(priceColumn.getText())&gt;=1000)
+			{
+				WebElement bookName=driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+i+"]/td[1]"));
+				System.out.println(bookName.getText());
+			}
+		}
+		System.out.println("========================================================================");
+		// How to print data from last row
+		System.out.println("Directly printing column values of last row of table: ");
+		List columnOfLastRow= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr[last()]/td"));
+		for(WebElement e:columnOfLastRow)
+		{
+			System.out.println(e.getText());
+		}
+		System.out.println("========================================================================");
+		// find sum of cost of all books listed
+		
+		List costColumns= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr/td[4]"));
+		int sum_price=0;
+		for(WebElement e:costColumns)
+		{
+			sum_price= sum_price+Integer.parseInt(e.getText());
+		}
+		System.out.println("total price: "+sum_price);
+		System.out.println("========================================================================");
+		
+		
+		// Retrive cell value by providing row and column number
+		WebElement colValue= driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr[2]/td[3]"));
+		System.out.println("Cell Value : "+colValue.getText());
+		System.out.println("========================================================================");
+		System.out.println("Cell value using custom method: "+HandlingWebTable.getColValue(2, 3, driver));
+		
+		
+		// Printing column index based on column name
+		List allHeadersOfTable2= driver.findElements(By.xpath("//table[@name='BookTable']/tbody/tr[1]/th"));
+		for(int k=0;k&lt;allHeadersOfTable2.size();k++)
+		{
+			if(allHeadersOfTable2.get(k).getText().equalsIgnoreCase("price"))
+			{
+				System.out.println("Column index of Price column is: "+(k+1));
+			}
+				
+		}
+		
+		driver.quit();
+		
+	}
+	
+	public static String getColValue(int row, int col, WebDriver driver)
+	{
+		WebElement colValue= driver.findElement(By.xpath("//table[@name='BookTable']/tbody/tr["+row+"]/td["+col+"]"));
+		return colValue.getText();
+				
+	}
+	
+}
+ 
+ 
+
+ 
+Output:
+Execution Starts
+Starting ChromeDriver 2.29.461591 (62ebf098771772160f391d75e589dc567915b233) on port 18351
+Only local connections are allowed.
+Jul 14, 2017 11:33:18 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Browser opened.
+Printing all header of table assuming first row as header: 
+Headers in table are below:
+Total headers found: 4
+BookName
+Author
+Subject
+Price
+=====================================================================
+Printing all header of table without information of row header 
+Headers in table are below:
+Total headers found: 4
+BookName
+Author
+Subject
+Price
+=====================================================================
+Retrieving total number of data rows:
+Total data rows found in table:6
+=====================================================================
+Retrieving total number of columns for each row:
+Number of columns in 1 data row is:4
+Number of columns in 2 data row is:4
+Number of columns in 3 data row is:4
+Number of columns in 4 data row is:4
+Number of columns in 5 data row is:4
+Number of columns in 6 data row is:4
+=====================================================================
+Printing all column value: 
+Learn Selenium Amit Selenium 300 
+Learn Java Mukesh Java 500 
+Learn JS Animesh Javascript 300 
+Master In Selenium Mukesh Selenium 3000 
+Master In Java Amod JAVA 2000 
+Master In JS Amit Javascript 1000 
+=====================================================================
+Way 1: Books written by Mukesh are below:
+Learn Java
+Master In Selenium
+=====================================================================
+Way 2: Books written by Mukesh are below:
+Learn Java
+Master In Selenium
+========================================================================
+Books with price greater than and equal to 1000 are below:
+Master In Selenium
+Master In Java
+Master In JS
+========================================================================
+Directly printing column values of last row of table: 
+Master In JS
+Amit
+Javascript
+1000
+========================================================================
+total price: 7100
+========================================================================
+Cell Value : Selenium
+========================================================================
+Cell value using custom method: Selenium
+Column index of Price column is: 4
+
+	
+Output:
+Execution Starts
+Starting ChromeDriver 2.29.461591 (62ebf098771772160f391d75e589dc567915b233) on port 18351
+Only local connections are allowed.
+Jul 14, 2017 11:33:18 AM org.openqa.selenium.remote.ProtocolHandshake createSession
+INFO: Detected dialect: OSS
+Browser opened.
+Printing all header of table assuming first row as header: 
+Headers in table are below:
+Total headers found: 4
+BookName
+Author
+Subject
+Price
+=====================================================================
+Printing all header of table without information of row header 
+Headers in table are below:
+Total headers found: 4
+BookName
+Author
+Subject
+Price
+=====================================================================
+Retrieving total number of data rows:
+Total data rows found in table:6
+=====================================================================
+Retrieving total number of columns for each row:
+Number of columns in 1 data row is:4
+Number of columns in 2 data row is:4
+Number of columns in 3 data row is:4
+Number of columns in 4 data row is:4
+Number of columns in 5 data row is:4
+Number of columns in 6 data row is:4
+=====================================================================
+Printing all column value: 
+Learn Selenium Amit Selenium 300 
+Learn Java Mukesh Java 500 
+Learn JS Animesh Javascript 300 
+Master In Selenium Mukesh Selenium 3000 
+Master In Java Amod JAVA 2000 
+Master In JS Amit Javascript 1000 
+=====================================================================
+Way 1: Books written by Mukesh are below:
+Learn Java
+Master In Selenium
+=====================================================================
+Way 2: Books written by Mukesh are below:
+Learn Java
+Master In Selenium
+========================================================================
+Books with price greater than and equal to 1000 are below:
+Master In Selenium
+Master In Java
+Master In JS
+========================================================================
+Directly printing column values of last row of table: 
+Master In JS
+Amit
+Javascript
+1000
+========================================================================
+total price: 7100
+========================================================================
+Cell Value : Selenium
+========================================================================
+Cell value using custom method: Selenium
+Column index of Price column is: 4
+

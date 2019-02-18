@@ -1,0 +1,238 @@
+iframes
+****************************************************************************************************************
+
+Identification of a iframe on WebPage:
+
+    Right-click on the element. Check if “This Frame” option is available. It means this is a iFrame.
+
+    Right click and click on Inspect then View page source of the web page and check if  “iFrame” tag is Available or Not?
+
+ 
+Switch to iFrame using Multiple ways:
+
+    By Index
+    By Name or Id
+    By Web Element
+
+ 
+
+You need to first find iFrame. You can do so using following statement:
+
+    Find iFrame with tagName and store into WebElement to Perform operation on it.
+
+WebElement iFrame= driver.findElement(By.tagName("iframe"));
+
+	
+WebElement iFrame= driver.findElement(By.tagName("iframe"));
+***********************************************************************************************************************
+ 
+
+1. By index, if  one or more frames present:
+
+    Using switchTo Method we can Move / Switch WebDriver Instance / Object from one frame to other using index of iFrame.
+
+Syntax:  driver.switchTo().frame(int x);
+
+Example: driver.switchTo().frame(1);
+
+	
+Syntax:  driver.switchTo().frame(int x);
+ 
+Example: driver.switchTo().frame(1);
+
+ *************************************************************************************************************************
+
+2. By Name or ID:
+
+    Using switchTo Method we can Move / Switch WebDriver Instance / Object from one frame to other using Frame Name of iFrame.
+
+Syntax:  driver.switchTo().frame(String frameName);
+
+Example: driver.switchTo().frame(frameName);
+
+	
+Syntax:  driver.switchTo().frame(String frameName);
+ 
+Example: driver.switchTo().frame(frameName);
+
+ **********************************************************************************************************************
+
+3. By WebElement locator:
+
+    Using switchTo Method we can Move / Switch WebDriver Instance / Object from one frame to other using WebElement Locator of iFrame.
+
+Syntax:   driver.switchTo().frame(WebElement element);
+
+Example: driver.switchTo().frame(iFrame);
+
+	
+Syntax:   driver.switchTo().frame(WebElement element);
+ 
+Example: driver.switchTo().frame(iFrame);
+
+ 
+**************************************************************************************************************************
+Switch to one frame to another Frame:
+
+    Using switchTo Method using Two times we can switch from one iFrame to other iFrame.
+
+driver.switchTo().frame(ParentFrame).switchTo().frame(ChildFrame);
+1
+	
+driver.switchTo().frame(ParentFrame).switchTo().frame(ChildFrame);
+
+ ****************************************************************************************************************************
+Switch to Main / Parent Frame:
+***********************************************************************************************************************************
+    After perform operation on iFrame we have need to Move back into Parent frame that time we switchTo into parentFrame / defaultContent.
+
+// Move back to the parent frame, you can either use
+driver.switchTo().parentFrame();
+
+// Get back to the main (or most parent) frame
+driver.switchTo().defaultContent();
+
+	
+// Move back to the parent frame, you can either use
+driver.switchTo().parentFrame();
+ 
+// Get back to the main (or most parent) frame
+driver.switchTo().defaultContent();
+
+ 
+Scenario’s To Handle iFrame:
+
+    Inspect if the element is within an iFrame.
+    Switch to the iFrame.
+    Identify and then perform the required operation on the element.
+    Switch back to main web page.
+
+Example of Handle iframe in Selenium:
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Tab_Handle_ForEach {
+
+	public static void main(String[] args) {
+
+		System.setProperty("webdriver.firefox.marionette", "C:\\geckodriver.exe");
+
+		WebDriver driver = new FirefoxDriver();
+
+		driver.get("http://www.stqatools.com");
+
+		// Click on link to open iFrame
+		driver.findElement(By.id("iFrame_Name")).click();
+
+		// Switch to Frame
+		driver.switchTo().frame("iframe");
+
+		// Perform operation on Frame
+		driver.findElement(By.id("tinymce")).sendKeys("Text_To_frame");
+
+		// Switch back to defaultContent
+		driver.switchTo().defaultContent();
+
+		// Switch between one frame to another
+		driver.switchTo().frame("iframe_1").switchTo().frame("iframe_2");
+
+	}
+
+}
+
+	
+*****************************************************************************************************************
+
+ Switch to iFrame using Multiple ways:
+
+    By Index
+    By Name or Id
+    By Web Element
+
+ 
+
+You need to first find iFrame. You can do so using following statement:
+
+    Find iFrame with tagName and store into WebElement to Perform operation on it.
+
+WebElement iFrame= driver.findElement(By.tagName("iframe"));
+1
+	
+WebElement iFrame= driver.findElement(By.tagName("iframe"));
+
+ 
+
+1. By index, if  one or more frames present:
+
+    Using switchTo Method we can Move / Switch WebDriver Instance / Object from one frame to other using index of iFrame.
+
+Syntax:  driver.switchTo().frame(int x);
+
+Example: driver.switchTo().frame(1);
+
+	
+Syntax:  driver.switchTo().frame(int x);
+ 
+Example: driver.switchTo().frame(1);
+
+ *********************************************************************************************************************
+
+2. By Name or ID:
+
+    Using switchTo Method we can Move / Switch WebDriver Instance / Object from one frame to other using Frame Name of iFrame.
+
+Syntax:  driver.switchTo().frame(String frameName);
+
+Example: driver.switchTo().frame(frameName);
+
+	
+Syntax:  driver.switchTo().frame(String frameName);
+ 
+Example: driver.switchTo().frame(frameName);
+
+ ********************************************************************************************************************
+
+3. By WebElement locator:
+
+    Using switchTo Method we can Move / Switch WebDriver Instance / Object from one frame to other using WebElement Locator of iFrame.
+
+Syntax:   driver.switchTo().frame(WebElement element);
+
+Example: driver.switchTo().frame(iFrame);
+
+	
+Syntax:   driver.switchTo().frame(WebElement element);
+ 
+Example: driver.switchTo().frame(iFrame);
+
+ ****************************************************************************************************
+
+Switch to one frame to another Frame:
+
+    Using switchTo Method using Two times we can switch from one iFrame to other iFrame.
+
+driver.switchTo().frame(ParentFrame).switchTo().frame(ChildFrame);
+
+	
+driver.switchTo().frame(ParentFrame).switchTo().frame(ChildFrame);
+**************************************************************************************************************************
+ 
+Switch to Main / Parent Frame:
+
+    After perform operation on iFrame we have need to Move back into Parent frame that time we switchTo into parentFrame / defaultContent.
+
+// Move back to the parent frame, you can either use
+driver.switchTo().parentFrame();
+
+// Get back to the main (or most parent) frame
+driver.switchTo().defaultContent();
+	
+// Move back to the parent frame, you can either use
+driver.switchTo().parentFrame();
+ 
+// Get back to the main (or most parent) frame
+driver.switchTo().defaultContent();

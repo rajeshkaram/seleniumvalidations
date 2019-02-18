@@ -1,0 +1,582 @@
+waiting command in selenium
+  
+  
+  
+    Implicit Wait
+    Explicit Wait
+        sleep
+        WebDriverWait
+        PageLoadTimeout Command
+        SetScriptTimeout Command
+    FluentWait
+
+ ******************************************************************************************************************
+1. Implicit Wait:
+
+    Implicit Wait means informing selenium web driver to wait for specific amount of time.
+
+    If the web element is not visible after waiting for that specific point then throw “NoSuchElementException”.
+
+ 
+******************************************************************************************************************
+Syntax Of Implicit Wait:
+******************************************************************************************************************
+driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+1
+	
+driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+
+ 
+
+Example of Implicitlywait:
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+
+     public class ImplicitlyWait {
+
+     public static void main(String[] args) {
+
+     System.setProperty("webdriver.gecko.driver","D:\\geckodriver.exe");
+
+     WebDriver driver = new FirefoxDriver();
+
+     driver.get("http://www.stqatools.com");
+
+     // Wait 30 Seconds until Page loading
+     driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+   }
+}
+******************************************************************************************************************
+	
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+ 
+     public class ImplicitlyWait {
+ 
+     public static void main(String[] args) {
+ 
+     System.setProperty("webdriver.gecko.driver","D:\\geckodriver.exe");
+ 
+     WebDriver driver = new FirefoxDriver();
+ 
+     driver.get("http://www.stqatools.com");
+ 
+     // Wait 30 Seconds until Page loading
+     driver.manage().timeouts().implicitlyWait(30,TimeUnit.SECONDS);
+   }
+}
+******************************************************************************************************************
+2. Explicit Wait:
+
+    In Explicit wait along with wait time we also provide the wait condition for particular WebElement.
+
+    It will wait till the condition or the maximum wait time provided before throwing the Exception “ElementNotVisibleException”.
+
+ 
+
+    Thread.sleep
+    WebDriverWait
+    PageLoadTimeout Command
+    SetScriptTimeout Command
+******************************************************************************************************************
+ 
+1. Thread.sleep Command
+
+    The sleep code always has to wait for the seconds mentioned within the bracket, even if the work page is ready after 5 seconds. So this test can slow down.
+
+ 
+
+Example:
+// Wait 5 Seconds
+Thread.sleep(5000);
+1
+2
+	
+// Wait 5 Seconds
+Thread.sleep(5000);
+
+ 
+******************************************************************************************************************
+Example of Thread.Sleep:
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+
+     public class Thread_Sleep_Wait {
+
+     public static void main(String[] args) {
+
+     System.setProperty(webdriver.gecko.driver","D:\\geckodriver.exe");
+
+     WebDriver driver = new FirefoxDriver();
+
+     driver.get("http://www.stqatools.com");
+
+     // Wait 5 Seconds Compulsory
+     Thread.sleep(5000);
+   }
+
+}
+
+	******************************************************************************************************************
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+ 
+     public class Thread_Sleep_Wait {
+ 
+     public static void main(String[] args) {
+ 
+     System.setProperty(webdriver.gecko.driver","D:\\geckodriver.exe");
+ 
+     WebDriver driver = new FirefoxDriver();
+ 
+     driver.get("http://www.stqatools.com");
+ 
+     // Wait 5 Seconds Compulsory
+     Thread.sleep(5000);
+   }
+ 
+}
+******************************************************************************************************************
+2. WebDriverWait
+
+    Before proceeding any operation, wait for a certain position before proceeding with the code.
+
+    Wait for the WebDriver to check whether the element exists or to operate on it, visible or enabled or disabled or clickable.
+
+// Create a Object wait of WebdriverWait class
+WebDriverWait wait = new WebDriverWait(driver,30); 
+
+// Using ExpectedConditions wait until element visibility
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("input")));
+
+	
+// Create a Object wait of WebdriverWait class
+WebDriverWait wait = new WebDriverWait(driver,30); 
+ 
+// Using ExpectedConditions wait until element visibility
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("input")));
+
+ 
+
+ExpectedConditions class can be useful in a lot of cases and provides some set of predefined condition to wait for the element. Here are some of them below:
+
+ 
+
+findElement using locator and store into WebElement element to use in ExpectedConditions class:
+WebElement element = driver.findElement(By.id("id"));
+1
+	
+WebElement element = driver.findElement(By.id("id"));
+
+ 
+******************************************************************************************************************
+alertIsPresent :
+// Wait until alert present on page
+
+wait.until(ExpectedConditions.alertIsPresent());
+
+	
+// Wait until alert present on page
+ 
+wait.until(ExpectedConditions.alertIsPresent());
+
+ ******************************************************************************************************************
+
+elementToBeClickable:
+// Wait until element to be clickable on page
+
+wait.until(ExpectedConditions.elementToBeClickable(element));
+
+	
+// Wait until element to be clickable on page
+ 
+wait.until(ExpectedConditions.elementToBeClickable(element));
+
+ ******************************************************************************************************************
+
+elementToBeSelected:
+// Wait until element to be selectable on page
+
+wait.until(ExpectedConditions.elementToBeSelected(element));
+
+	
+// Wait until element to be selectable on page
+ 
+wait.until(ExpectedConditions.elementToBeSelected(element));
+
+ ******************************************************************************************************************
+
+frameToBeAvailableAndSwitchToIt:
+// Wait until frame is available and frame selected.
+
+wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
+
+	
+// Wait until frame is available and frame selected.
+ 
+wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
+
+ ******************************************************************************************************************
+
+invisibilityOf:
+// Wait and check element is invisibility
+
+wait.until(ExpectedConditions.invisibilityOf(element));
+
+	
+// Wait and check element is invisibility
+ 
+wait.until(ExpectedConditions.invisibilityOf(element));
+
+ ******************************************************************************************************************
+
+presenceOfAllElementsLocatedBy:
+// Wait until present element located by.
+
+wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy((By) element));
+
+	
+// Wait until present element located by.
+ 
+wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy((By) element));
+******************************************************************************************************************
+ 
+
+textToBePresentInElement:
+// Wait until text present on particular an element
+
+wait.until(ExpectedConditions.textToBePresentInElement(element, "Text"));
+
+	
+// Wait until text present on particular an element
+ 
+wait.until(ExpectedConditions.textToBePresentInElement(element, "Text"));
+
+ ******************************************************************************************************************
+
+textToBePresentInElementValue:
+// Wait until element value present for a particular element.
+
+wait.until(ExpectedConditions.textToBePresentInElementValue(element, "Value"));
+
+	
+// Wait until element value present for a particular element.
+ 
+wait.until(ExpectedConditions.textToBePresentInElementValue(element, "Value"));
+
+ 
+******************************************************************************************************************
+visibilityOf:
+// check element visibility
+
+wait.until(ExpectedConditions.visibilityOf(element));
+
+	
+// check element visibility
+ 
+wait.until(ExpectedConditions.visibilityOf(element));
+
+ ******************************************************************************************************************
+
+titleContains:
+//  Wait and check title contains or not.
+
+wait.until(ExpectedConditions.titleContains("Tilte"));
+
+	
+//  Wait and check title contains or not.
+ 
+wait.until(ExpectedConditions.titleContains("Tilte"));
+
+ 
+******************************************************************************************************************
+Example of WebDriverWait:
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+
+public class WebDriver_Wait {
+
+public static void main(String[] args) {
+
+System.setProperty("webdriver.gecko.driver","D:\\geckodriver.exe");
+
+WebDriver driver = new FirefoxDriver();
+
+driver.get("http://www.stqatools.com");
+
+WebElement element = driver.findElement(By.id("id"));
+
+// Create a Object wait of WebdriverWait class
+WebDriverWait wait = new WebDriverWait(driver,30);
+
+// Using ExpectedConditions wait until element visibility
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("input")));
+
+// Wait until alert present on page
+wait.until(ExpectedConditions.alertIsPresent());
+
+// Wait until element to be clickable on page
+wait.until(ExpectedConditions.elementToBeClickable(element));
+
+// Wait until element to be selectable on page
+wait.until(ExpectedConditions.elementToBeSelected(element));
+
+// Wait until frame is available and frame selected.
+wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
+
+// Wait and check element is invisibility
+wait.until(ExpectedConditions.invisibilityOf(element));
+
+// Wait until present element located by.
+wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy((By) element));
+
+// Wait until text present on particular an element
+wait.until(ExpectedConditions.textToBePresentInElement(element, "Text"));
+
+// Wait until element value present for a particular element.
+wait.until(ExpectedConditions.textToBePresentInElementValue(element, "Value"));
+
+// check element visibility
+wait.until(ExpectedConditions.visibilityOf(element));
+
+//  Wait and check title contains or not.
+wait.until(ExpectedConditions.titleContains("Tilte"));
+
+}
+
+}
+	******************************************************************************************************************
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+ 
+public class WebDriver_Wait {
+ 
+public static void main(String[] args) {
+ 
+System.setProperty("webdriver.gecko.driver","D:\\geckodriver.exe");
+ 
+WebDriver driver = new FirefoxDriver();
+ 
+driver.get("http://www.stqatools.com");
+ 
+WebElement element = driver.findElement(By.id("id"));
+ 
+// Create a Object wait of WebdriverWait class
+WebDriverWait wait = new WebDriverWait(driver,30);
+ 
+// Using ExpectedConditions wait until element visibility
+wait.until(ExpectedConditions.visibilityOfElementLocated(By.tagName("input")));
+ 
+// Wait until alert present on page
+wait.until(ExpectedConditions.alertIsPresent());
+ 
+// Wait until element to be clickable on page
+wait.until(ExpectedConditions.elementToBeClickable(element));
+ 
+// Wait until element to be selectable on page
+wait.until(ExpectedConditions.elementToBeSelected(element));
+ 
+// Wait until frame is available and frame selected.
+wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(element));
+ 
+// Wait and check element is invisibility
+wait.until(ExpectedConditions.invisibilityOf(element));
+ 
+// Wait until present element located by.
+wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy((By) element));
+ 
+// Wait until text present on particular an element
+wait.until(ExpectedConditions.textToBePresentInElement(element, "Text"));
+ 
+// Wait until element value present for a particular element.
+wait.until(ExpectedConditions.textToBePresentInElementValue(element, "Value"));
+ 
+// check element visibility
+wait.until(ExpectedConditions.visibilityOf(element));
+ 
+//  Wait and check title contains or not.
+wait.until(ExpectedConditions.titleContains("Tilte"));
+ 
+}
+ 
+}
+
+ ******************************************************************************************************************
+3. PageLoadTimeout Command
+
+    Determines the amount of time to wait for the page load to complete before the error is thrown at the end of time.
+
+    If the timeout is negative, then the page load may be indefinite until the pageload.
+
+ 
+
+Example:
+driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
+
+	
+driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
+
+ 
+******************************************************************************************************************
+Example of PageLoadTimeout:
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class pageLoadTimeout_Wait {
+
+public static void main(String[] args) {
+
+System.setProperty("webdriver.gecko.driver","D:\\geckodriver.exe");
+
+WebDriver driver = new FirefoxDriver();
+
+driver.get("http://www.stqatools.com");
+
+driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
+
+}
+
+}
+******************************************************************************************************************
+	
+
+
+ ******************************************************************************************************************
+4. SetScriptTimeout Command
+
+    Before throwing an error, the amount of time is set to wait for the asynchronous script to complete the execution.
+
+    If timeout is negative, then the script will be allowed to run indefinitely.
+
+ 
+
+Example:
+driver.manage().timeouts().setScriptTimeout(500, TimeUnit.SECONDS);
+1
+	
+driver.manage().timeouts().setScriptTimeout(500, TimeUnit.SECONDS);
+
+ ******************************************************************************************************************
+
+Example of SetScriptTimeout:
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class setScriptTimeout_Wait {
+
+public static void main(String[] args) {
+
+System.setProperty("webdriver.gecko.driver","D:\\geckodriver.exe");
+
+WebDriver driver = new FirefoxDriver();
+
+driver.get("http://www.stqatools.com");
+
+driver.manage().timeouts().setScriptTimeout(500, TimeUnit.SECONDS);
+
+}
+
+}
+
+	
+
+******************************************************************************************************************
+
+3. FluentWait Command
+
+ 
+
+    Fluent Wait uses two parameters to handle wait– timeout value and polling frequency.
+
+    Fluent wait is another type of Explicit wait and you can define polling and ignore the exception to continue with script execution in case element is not found in webpage.
+
+ 
+
+First of all, it sets the following values.
+
+    Maximum time to wait for any condition.
+
+    Frequency to check the success or failure of a specified position.
+
+FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+
+.withTimeout(timeoutSeconds, TimeUnit.SECONDS)
+
+.pollingEvery(500, TimeUnit.MILLISECONDS)
+
+.ignoring(NoSuchElementException.class);
+
+	
+FluentWait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+ 
+.withTimeout(timeoutSeconds, TimeUnit.SECONDS)
+ 
+.pollingEvery(500, TimeUnit.MILLISECONDS)
+ 
+.ignoring(NoSuchElementException.class);
+
+ ******************************************************************************************************************
+
+Example of FluentWait using WebDriver wait:
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Fluent_Wait {
+
+public static void main(String[] args) {
+
+System.setProperty("webdriver.gecko.driver","D:\\geckodriver.exe");
+
+WebDriver driver = new FirefoxDriver();
+
+driver.get("http://www.stqatools.com");
+
+WebElement stqatools = driver.findElement(By.id("stqatools"));
+
+new WebDriverWait(driver, 10)
+
+.pollingEvery(2, TimeUnit.SECONDS)
+
+.withTimeout(10, TimeUnit.SECONDS)
+
+.until(ExpectedConditions.visibilityOf(stqatools));
+
+}
+
+}
+
+	

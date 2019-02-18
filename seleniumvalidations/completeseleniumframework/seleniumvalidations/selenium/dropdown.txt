@@ -1,0 +1,27 @@
+
+
+select drop down and print the values in console (particular dropdown)single
+********************************************************************************************
+ Select dropDown = new Select(Driver.findElement()));
+List<WebElement> e = dropDown.getOptions();
+int itemCount = e.size();
+
+for(int l = 0; l < itemCount; l++)
+{
+    System.out.println(e.get(l).getText());
+}
+
+***************************************************************************************************
+
+select dropdown and print the values in console(by using tagname select it will count size and print the dropdown values
+***************************************************************************************************************************
+driver.get("https://www.facebook.com/");
+List<WebElement>dropdown=driver.findElements(By.tagName("select"));
+	System.out.println("total no of dropdown"+dropdown.size());
+	
+	for(int i=0;i<=dropdown.size();i++) {
+		
+		System.out.println(dropdown.get(i).getText());
+	}	
+
+********************************************************************************************************************

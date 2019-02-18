@@ -1,0 +1,49 @@
+verify datepicker in selenium
+*****************************************************************************************************************
+
+WebDriver driver;
+	String month="March 2020";
+	String date="21";
+	@Test
+	public void datepicker() throws InterruptedException {
+	System.setProperty("webdriver.chrome.driver", "E:\\completerajesh\\automation\\chromedriver.exe");	
+	driver = new ChromeDriver(); 
+	
+	driver.get("http://www.phptravels.net/");
+	driver.manage().window().maximize();
+	driver.findElement(By.xpath("//input[@type='text' and @placeholder='Check in' and @class='form input-lg dpd1' ]")).click();
+	WebElement mon=driver.findElement(By.xpath("//div[@class='datepicker dropdown-menu'][1]//div[1]//thead//tr[1]//th[2]"));
+	while(true) {
+		
+		if(mon.getText().equals(month)) {
+			break;
+			
+		}
+		
+		else {
+			
+			driver.findElement(By.xpath("//div[@class='datepicker dropdown-menu'][1]//div[1]//thead//tr[1]//th[3]")).click();
+			Thread.sleep(1000);
+			
+			
+		}
+	}
+	
+	driver.findElement(By.xpath("//div[@class='datepicker dropdown-menu'][1]//div[1]//tbody//tr[4]//td[text()='"+date+"']")).click();
+}
+}
+
+************************************************************************************************************
+date picker
+
+driver.get("http://spicejet.com/");
+webElement date=driver.findElement(By.id(""));
+String dateval="30-12-2019"
+}
+
+public static void selectDateby(WebDriver driver,WebElement element,String dateval){
+
+JavascriptExecutor js=((JavascriptExecutor)driver);
+js.executeScript("argument[0].setAttribute('value','"+dateval+"');",element);
+}
+*********************************************************************************************************

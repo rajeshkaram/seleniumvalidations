@@ -1,0 +1,186 @@
+alerts
+
+
+
+What is Alert?
+
+    Alert is a small message box that displays on-screen notifications to give the user some kind of information or asks for permission to perform some type of operation.
+
+    It can also be used for warning purposes.
+
+ 
+
+Type of Operation’s perform on Alert:
+
+    accept() : To accept the alert.
+
+    dismiss() : To dismiss the alert.
+
+    getText() : To get the text of the alert.
+
+    sendKeys() : To write some text to the alert.
+
+ 
+
+Switch to Alert to perform some operation on Alert:
+Alert alert = driver.switchTo().alert();
+
+	
+Alert alert = driver.switchTo().alert();
+
+ 
+
+There are 3 types of Alert box:
+
+    Simple Alert :- It give the some information about the current screen or give some warning.
+    Prompt Alert :- It Ask from the User to provide some inputs.
+    Confirmation Alert :- This Alert box ask for a permission to perform some type of operation.
+
+ 
+
+Package:
+import org.openqa.selenium.Alert;
+
+	
+import org.openqa.selenium.Alert;
+
+ 
+Alert Accept:
+
+void accept() :- It allow programmer to click on the ‘OK’ Button of the Alert box.
+driver.switchTo().alert().accept();
+
+	
+driver.switchTo().alert().accept();
+
+ 
+Alert Dismiss:
+
+void dismiss() :- It allow programmer to click on the ‘Cancel’ button of the Alert box.
+driver.switchTo().alert().dismiss();
+
+	
+driver.switchTo().alert().dismiss();
+
+ 
+Get Alert Text:
+
+String getText() :- It simply allow programmer to capture the alert box.
+driver.switchTo().alert().getText();
+
+	
+driver.switchTo().alert().getText();
+
+ 
+Send Text To Alert:
+
+void sendKeys(String stringToSend) :- It allow programmer to send data into alert box.
+driver.switchTo().alert().sendKeys(“Text”);
+
+	
+driver.switchTo().alert().sendKeys(“Text”);
+
+ 
+
+Note: To Handle Window go to this Link.
+
+ 
+**********************************************************************************************************
+Scenario’s:
+
+    setProperty To Launch Browser.
+
+    Open URL.
+
+    Click on WebElement to Open Alert / PopUP.
+
+    After click on WebElment create object of Alert to switch into Alert / PopUP.
+
+    Perform Accept operation on WebElement.
+
+    Perform Dismiss operation on WebElement.
+
+    Perform GetText operation on WebElement.
+
+    Perform sendKeys operation on WebElement.
+
+ 
+
+Example of Handle Alert and PopUp Using selenium:
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Alert_Popup_Handle {
+
+public static void main(String[] args) {
+
+System.setProperty("webdriver.gecko.driver","D:\\geckodriver.exe");
+
+WebDriver driver = new FirefoxDriver();
+
+driver.get("http://www.stqatools.com");
+
+// Click on button to show Alert
+driver.findElement(By.id("Alert_ID")).click();
+
+// Switch to Alert to perform some operation
+Alert alert = driver.switchTo().alert();
+
+// Accept alert
+driver.switchTo().alert().accept();
+
+// Dismiss alert
+driver.switchTo().alert().dismiss();
+
+// GetText of alert
+driver.switchTo().alert().getText();
+
+// SendKeys to particular alert
+driver.switchTo().alert().sendKeys("Sandeep");
+
+}
+
+}
+	
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+ 
+public class Alert_Popup_Handle {
+ 
+public static void main(String[] args) {
+ 
+System.setProperty("webdriver.gecko.driver","D:\\geckodriver.exe");
+ 
+WebDriver driver = new FirefoxDriver();
+ 
+driver.get("http://www.stqatools.com");
+ 
+// Click on button to show Alert
+driver.findElement(By.id("Alert_ID")).click();
+ 
+// Switch to Alert to perform some operation
+Alert alert = driver.switchTo().alert();
+ 
+// Accept alert
+driver.switchTo().alert().accept();
+ 
+// Dismiss alert
+driver.switchTo().alert().dismiss();
+ 
+// GetText of alert
+driver.switchTo().alert().getText();
+ 
+// SendKeys to particular alert
+driver.switchTo().alert().sendKeys("Sandeep");
+ 
+}
+ 
+}

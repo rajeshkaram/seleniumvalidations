@@ -1,0 +1,105 @@
+
+
+mutiple window  and tabs switching selenium
+*****************************************************************************************************************
+	
+	public class mutiplewindow {
+	WebDriver driver;
+	@Test
+	public void mutiplewindow() throws InterruptedException {
+	System.setProperty("webdriver.chrome.driver", "E:\\completerajesh\\automation\\chromedriver.exe");	
+	driver = new ChromeDriver(); 
+	WebDriver driver=new ChromeDriver();
+	driver.get("https://www.naukri.com/");
+	String parent=driver.getWindowHandle();
+	System.out.println("parent window id is "+parent);
+	Set<String>allwindows=driver.getWindowHandles();
+	ArrayList<String>tabs=new ArrayList<>(allwindows);
+	driver.switchTo().window(tabs.get(2));
+	driver.close();
+	driver.switchTo().window(tabs.get(1));
+
+	driver.close();
+	driver.switchTo().window(tabs.get(0));
+	
+	
+	System.out.println("Ttile of parent window is "+driver.getTitle());
+}
+}
+****************************************************************************************************
+
+multiple tabs and links open in different tabs
+**********************************************************************************************************
+WebDriver driver;
+	@Test
+	public void mutiplewindow() throws InterruptedException {
+	System.setProperty("webdriver.chrome.driver", "E:\\completerajesh\\automation\\chromedriver.exe");	
+	driver = new ChromeDriver(); 
+	WebDriver driver=new ChromeDriver();
+	driver.get("http://openclinic.sourceforge.net/openclinic/home/index.php");
+	
+	String selectlinknewtab=Keys.chord(Keys.CONTROL,Keys.RETURN);
+		
+		driver.findElement(By.linkText("Medical Records")).sendKeys(selectlinknewtab);
+		ArrayList<String>tabs=new ArrayList<>(driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));
+*******************************************************************************************************
+window handling parent and child
+*****************************************************************************************************
+driver.get(url)
+driver.find(xpath).click();
+set<String>handle=driver.getwindowHandles()
+iterator<string>it=handler.iterator();
+
+string parentwindowid=it.next();
+system.out.println("parent window id:"+parentwindowid);
+
+string childwindowid=it.next();
+system.out.println("child window id:"+childwindowid);
+
+driver.swithchTo().window(childwindowid);
+
+thread.sleep(2000);
+system.out.println("child window pop up title"+driver.getTitle());
+driver.close();
+
+driver.switchTo().window(parentwindowid);
+thread.sleep(2000);
+system.out.println("paretn window title"+driver.getTitle());
+**************************************************************************************************
+
+mutiple windows tabs switching
+***************************************************************************************************
+//Get the current window handle
+String windowHandle = driver.getWindowHandle();
+
+//Get the list of window handles
+ArrayList tabs = new ArrayList (driver.getWindowHandles());
+System.out.println(tabs.size());
+//Use the list of window handles to switch between windows
+driver.switchTo().window(tabs.get(0));
+
+//Switch back to original window
+driver.switchTo().window(mainWindowHandle);
+
+******************************************************************************************************
+ window handling
+ *******************************************************************************************************
+ System.setProperty("webdriver.chrome.driver", "E:\\completerajesh\\automation\\chromedriver.exe");	
+		driver = new ChromeDriver(); 
+		driver.get("https://projects.qedgetech.com/banking");
+		String parentHandle = driver.getWindowHandle(); // get the current window handle
+		driver.findElement(By.xpath("//*[@id=\'post-81\']/div/div[3]/div[1]/p[6]/strong/a")).click(); // click some link that opens a new window
+
+		for (String winHandle : driver.getWindowHandles()) {
+		    driver.switchTo().window(winHandle); // switch focus of WebDriver to the next found window handle (that's your newly opened window)
+		}
+
+		//code to do something on new window
+
+		//driver.close(); // close newly opened window when done with it
+		//driver.switchTo().window(parentHandle); // switch back to the original window
+		driver.findElement(By.xpath("//*[@id='txtuId']")).sendKeys("Admin");
+		
+
+
